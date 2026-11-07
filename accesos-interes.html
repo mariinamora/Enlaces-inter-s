@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Accesos de interés</title>
+
+<script>
+/* ╔══════════════════════════════════════════════════════════════════════╗
+   ║   ACCESOS DE INTERÉS  ·  ESTE ES EL ÚNICO BLOQUE QUE HAY QUE EDITAR   ║
+   ╚══════════════════════════════════════════════════════════════════════╝
+
+   CÓMO AÑADIR UN ACCESO
+   Copia una línea completa (de «{» a «},»), pégala debajo y cambia los textos.
+
+     nombre       Obligatorio. Lo que se ve en la tarjeta.
+     descripcion  Opcional. Una frase corta.
+     url          Obligatoria. Dirección completa, empezando por https://
+     icono        Opcional. Disponibles: gestion, familias, pizarra, formacion,
+                  libro, enlace, correo, calendario. Si no lo pones, se usa «enlace».
+     logo         Opcional. Ruta de una imagen propia (ejemplo: "img/seneca.png")
+                  para usar el logotipo oficial en lugar del icono. Si la imagen
+                  no carga, se muestra el icono.
+
+   CÓMO ELIMINAR UN ACCESO: borra su línea completa.
+
+   NORMAS
+     · Cada línea termina en coma (la última puede no llevarla) y los textos van
+       entre comillas dobles " ".
+     · Dentro de un texto no uses comillas dobles: usa las españolas « ».
+     · Los accesos se muestran en el orden en que los escribas aquí.
+*/
+var ACCESOS = [
+  { nombre: "Séneca",
+    descripcion: "Gestión académica y administrativa del centro.",
+    url: "https://seneca.juntadeandalucia.es/seneca/jsp/portal/",
+    icono: "gestion", logo: "" },
+
+  { nombre: "PASEN",
+    descripcion: "Seguimiento académico y comunicación con el centro.",
+    url: "https://seneca.juntadeandalucia.es/seneca/jsp/portalpasen/",
+    icono: "familias", logo: "" },
+
+  { nombre: "Classroom",
+    descripcion: "Aulas virtuales, tareas y materiales de clase.",
+    url: "https://classroom.google.com/",
+    icono: "pizarra", logo: "" },
+
+  { nombre: "Plataforma de autoformación",
+    descripcion: "Cursos y recursos de formación en línea.",
+    url: "https://educacionadistancia.juntadeandalucia.es/centros/login/index.php",
+    icono: "formacion", logo: "" }
+];
+/* ═══════════════════════════ FIN DEL BLOQUE EDITABLE ═══════════════════════════ */
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1d1a3c;--navy2:#2b2757;--blue:#93c0e3;--blue-d:#6aa3d0;--sky:#e8f2fa;--ink:#2a2748;--mut:#55527a;--r:20px;--g:clamp(16px,4vw,32px);--ease:cubic-bezier(.2,.7,.2,1)}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#fff;color:var(--ink);font:400 16px/1.6 'Open Sans',system-ui,Arial,sans-serif;overflow-x:hidden}
+h2,p,ul{margin:0;padding:0}ul{list-style:none}
+[hidden]{display:none!important}
+:focus-visible{outline:3px solid var(--blue-d);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.ac-sec{width:100%;max-width:1200px;margin:0 auto;padding:clamp(20px,4vw,40px) var(--g)}
+.ac-head{margin-bottom:22px}
+.ac-head h2{font-weight:800;font-size:clamp(26px,4vw,38px);line-height:1.15;color:var(--navy)}
+.ac-head h2::after{content:"";display:block;width:64px;height:5px;border-radius:5px;background:var(--blue);margin-top:10px}
+.ac-sub{margin-top:10px;color:var(--mut);font-weight:600}
+
+.ac-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.ac-grid>li{display:flex;min-width:0}
+.ac{position:relative;display:flex;flex-direction:column;gap:16px;flex:1;min-width:0;padding:26px 24px 22px;overflow:hidden;text-decoration:none;color:var(--ink);background:#fff;border:2px solid var(--sky);border-radius:var(--r);transition:transform .35s var(--ease),box-shadow .35s,border-color .35s,background-color .35s,color .35s;animation:ac-in .7s var(--ease) backwards;animation-delay:calc(var(--i,0)*70ms);-webkit-tap-highlight-color:transparent}
+.ac::before{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(120deg,var(--navy),var(--navy2));opacity:0;transition:opacity .35s}
+.ac::after{content:"";position:absolute;right:-44px;top:-54px;width:140px;height:140px;border-radius:50%;background:var(--blue);opacity:.14;transition:transform .6s var(--ease),opacity .3s}
+@keyframes ac-in{from{opacity:0;transform:translateY(16px)}}
+.ac>*{position:relative;z-index:1}
+
+.ac-ico{width:64px;height:64px;flex:none;display:grid;place-items:center;border-radius:50%;color:var(--blue);background:linear-gradient(120deg,var(--navy),var(--navy2));transition:transform .45s var(--ease),background .3s,color .3s}
+.ac-ico svg{width:32px;height:32px;display:block}
+.ac-ico.has-logo{background:#fff;border:2px solid var(--sky)}
+.ac-ico img{width:60%;height:60%;object-fit:contain;display:block}
+.ac-txt{display:flex;flex-direction:column;gap:6px;min-width:0}
+.ac-name{font-weight:800;font-size:1.3rem;line-height:1.25;color:var(--navy);text-wrap:balance;transition:color .3s}
+.ac-desc{font-size:.94rem;line-height:1.55;color:var(--mut);transition:color .3s}
+.ac-go{margin-top:auto;display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:.92rem;color:var(--navy);transition:color .3s}
+.ac-go svg{width:18px;height:18px;transition:transform .35s var(--ease)}
+
+.ac:hover,.ac:focus-visible{transform:translateY(-6px);border-color:var(--navy);box-shadow:0 18px 34px rgba(29,26,60,.28)}
+.ac:hover::before,.ac:focus-visible::before{opacity:1}
+.ac:hover::after,.ac:focus-visible::after{transform:scale(1.7);opacity:.2}
+.ac:hover .ac-ico,.ac:focus-visible .ac-ico{transform:rotate(-8deg) scale(1.06)}
+.ac:hover .ac-ico:not(.has-logo),.ac:focus-visible .ac-ico:not(.has-logo){background:var(--blue);color:var(--navy)}
+.ac:hover .ac-name,.ac:focus-visible .ac-name{color:#fff}
+.ac:hover .ac-desc,.ac:focus-visible .ac-desc{color:#dbe9f5}
+.ac:hover .ac-go,.ac:focus-visible .ac-go{color:var(--blue)}
+.ac:hover .ac-go svg,.ac:focus-visible .ac-go svg{transform:translate(3px,-3px)}
+.ac:active{transform:translateY(-2px)}
+
+@media(max-width:959px){.ac-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){
+  .ac-grid{grid-template-columns:1fr;gap:12px}
+  .ac{flex-direction:row;align-items:center;gap:16px;padding:18px}
+  .ac-ico{width:56px;height:56px}.ac-ico svg{width:28px;height:28px}
+  .ac-txt{flex:1}
+  .ac-go{margin:0 0 0 auto}.ac-go span{display:none}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<section class="ac-sec" aria-labelledby="ac-h">
+  <header class="ac-head">
+    <h2 id="ac-h">Accesos de interés</h2>
+    <p class="ac-sub">Enlaces directos a las plataformas del centro.</p>
+  </header>
+  <ul class="ac-grid" id="ac-grid"></ul>
+  <noscript><p class="ac-sub">Activa JavaScript para ver los accesos de interés.</p></noscript>
+</section>
+
+<script>
+(function () {
+  'use strict';
+  /* Iconos de línea propios (decorativos). Los logotipos oficiales se añaden con el campo «logo». */
+  var ICONOS = {
+    gestion:    '<rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M9 4V3h6v1M9 12l2 2 4-4M9 17.5h6"/>',
+    familias:   '<path d="M4 5h16v11h-9l-5 4v-4H4z"/><path d="M12 13s-3-1.700-3-3.600a1.700 1.700 0 0 1 3-1.100 1.700 1.700 0 0 1 3 1.100c0 1.900-3 3.600-3 3.600z"/>',
+    pizarra:    '<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4M7 9h5M7 12h8"/>',
+    formacion:  '<rect x="4" y="5" width="16" height="11" rx="2"/><path d="M2.500 19.500h19"/><path d="M10.500 8.500l4 2.500-4 2.500z"/>',
+    libro:      '<path d="M12 6.500C10 5 7 4.500 3.500 5v13.500C7 18 10 18.500 12 20c2-1.500 5-2 8.500-1.500V5C17 4.500 14 5 12 6.500zM12 6.500V20"/>',
+    enlace:     '<path d="M10 14a4 4 0 0 0 5.700 0l3-3a4 4 0 0 0-5.700-5.700l-1 1"/><path d="M14 10a4 4 0 0 0-5.700 0l-3 3a4 4 0 0 0 5.700 5.700l1-1"/>',
+    correo:     '<rect x="3" y="5" width="18" height="14" rx="2.500"/><path d="M3.500 7l8.500 6 8.500-6"/>',
+    calendario: '<rect x="3.500" y="5" width="17" height="15.500" rx="2.500"/><path d="M3.500 10h17M8 3v4M16 3v4"/>'
+  };
+  var $ = function (s) { return document.querySelector(s); };
+  var grid = $('#ac-grid');
+
+  function el(tag, cls, txt) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (txt != null) n.textContent = txt;
+    return n;
+  }
+  function svg(name) {
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + ICONOS[name] + '</svg>';
+  }
+
+  function card(a, i) {
+    var link = el('a', 'ac');
+    link.href = a.url; link.target = '_blank'; link.rel = 'noopener noreferrer';
+    link.style.setProperty('--i', i);
+
+    var ico = el('span', 'ac-ico');
+    ico.setAttribute('aria-hidden', 'true');
+    var name = ICONOS[a.icono] ? a.icono : 'enlace';
+    function fallback() { ico.classList.remove('has-logo'); ico.innerHTML = svg(name); }
+    if (a.logo) {
+      ico.classList.add('has-logo');
+      var im = new Image(); im.alt = ''; im.onerror = fallback; im.src = a.logo;
+      ico.appendChild(im);
+    } else fallback();
+
+    var txt = el('span', 'ac-txt');
+    txt.appendChild(el('span', 'ac-name', a.nombre));
+    if (a.descripcion) txt.appendChild(el('span', 'ac-desc', a.descripcion));
+
+    var go = el('span', 'ac-go');
+    go.appendChild(el('span', '', 'Acceder'));
+    go.insertAdjacentHTML('beforeend', '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>');
+    go.appendChild(el('span', 'sr', ' (se abre en una pestaña nueva)'));
+
+    link.appendChild(ico); link.appendChild(txt); link.appendChild(go);
+    var li = el('li'); li.appendChild(link);
+    return li;
+  }
+
+  function render() {
+    var src = (typeof ACCESOS !== 'undefined' && Array.isArray(ACCESOS)) ? ACCESOS : [];
+    var n = 0;
+    src.forEach(function (a, i) {
+      if (!a || !a.nombre || !/^https?:\/\//i.test(String(a.url || ''))) {
+        console.warn('Acceso #' + (i + 1) + ' ignorado: revisa «nombre» y «url» (debe empezar por https://).');
+        return;
+      }
+      grid.appendChild(card({ nombre: String(a.nombre), descripcion: a.descripcion ? String(a.descripcion) : '', url: String(a.url).trim(), icono: a.icono ? String(a.icono).trim().toLowerCase() : '', logo: a.logo ? String(a.logo).trim() : '' }, n++));
+    });
+  }
+
+  /* Altura para el iframe (si la web contenedora la escucha) */
+  function post() {
+    if (window.parent === window) return;
+    var h = document.body.offsetHeight;
+    parent.postMessage({ ampaH: h, accesosH: h }, '*');
+  }
+  window.addEventListener('resize', post);
+  window.addEventListener('load', post);
+  if (window.ResizeObserver) new ResizeObserver(post).observe(document.body);
+  render();
+})();
+</script>
+</body>
+</html>
